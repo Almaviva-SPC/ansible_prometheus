@@ -37,7 +37,7 @@
     state: directory
     owner: "{{ prometheus_user }}"
     group: "{{ prometheus_group }}"
-    mode: "u=rwx,g=rx,o="
+    mode: 0755
   with_items:
     - "{{ prometheus_install_path }}"
     - "{{ prometheus_config_path }}"
