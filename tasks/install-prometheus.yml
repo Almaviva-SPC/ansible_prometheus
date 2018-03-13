@@ -89,7 +89,7 @@
     state: directory
     owner: "{{ prometheus_user }}"
     group: "{{ prometheus_group }}"
-    mode: "go-w"
+    mode: 0755
     recurse: yes
 
 - name: mkdir for config and data
@@ -98,7 +98,7 @@
     state: directory
     owner: "{{ prometheus_user }}"
     group: "{{ prometheus_group }}"
-    mode: "u=rwx,g=rx,o="
+    mode: 0755
   with_items:
     - "{{ prometheus_rule_path }}"
     - "{{ prometheus_file_sd_config_path }}"
@@ -122,7 +122,7 @@
     validate: "{{ prometheus_daemon_dir }}/promtool check rules %s"
   with_dict: '{{ prometheus_rule_files | default({}) }}'
   notify:
-    - reload prometheus
+    - restart prometheus
 
 - name: copy prometheus main config file from role's default, if necessary
   template:
@@ -131,7 +131,7 @@
     validate: "{{ prometheus_daemon_dir }}/promtool check config %s"
   when: prometheus_conf_main is not defined
   notify:
-    - reload prometheus
+    - restart prometheus
 
 - name: copy prometheus main config file from playbook's, if any
   template:
@@ -140,5 +140,5 @@
     validate: "{{ prometheus_daemon_dir }}/promtool check config %s"
   when: prometheus_conf_main is defined
   notify:
-    - reload prometheus
+    - restart prometheus
 
