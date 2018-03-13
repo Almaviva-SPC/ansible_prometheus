@@ -112,8 +112,7 @@
 
 - name: set INIT status
   service: name=prometheus enabled=yes
-
-
+  
 
 - name: copy rule files from playbook's, if any
   copy:
