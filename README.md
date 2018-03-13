@@ -1,14 +1,5 @@
 
-williamyeh.prometheus for Ansible Galaxy
-============
-
-[![Circle CI](https://circleci.com/gh/William-Yeh/ansible-prometheus.svg?style=shield)](https://circleci.com/gh/William-Yeh/ansible-prometheus) [![Build Status](https://travis-ci.org/William-Yeh/ansible-prometheus.svg?branch=master)](https://travis-ci.org/William-Yeh/ansible-prometheus)
-
-
-
 ## Summary
-
-Role name in Ansible Galaxy: **[williamyeh.prometheus](https://galaxy.ansible.com/williamyeh/prometheus/)**
 
 This Ansible role has the following features for [Prometheus](http://prometheus.io/):
 
@@ -326,15 +317,3 @@ Open the page in your browser:
 ## Dependencies
 
 None.
-
-
-## Contributors
-
-- [William Yeh](https://github.com/William-Yeh)
-- [Robbie Trencheny](https://github.com/robbiet480) - contribute an early version of building binaries from Go source code.
-- [Travis Truman](https://github.com/trumant) - contribute an early version of consul_exporter installer; now moved to [William-Yeh.consul_exporter](https://github.com/William-Yeh/ansible-consul-exporter).
-- [Musee Ullah](https://github.com/lae)
-
-## License
-
-MIT License. See the [LICENSE file](LICENSE) for details.
