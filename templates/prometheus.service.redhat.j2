@@ -1,0 +1,13 @@
+[Unit]
+Description=Prometheus server
+After=network.target
+
+[Service]
+User=prometheus
+WorkingDirectory={{ prometheus_daemon_dir }}
+ExecStart={{ prometheus_daemon_dir }}/prometheus \
+    --storage.tsdb.path={{ prometheus_db_path }} \
+    --config.file={{ prometheus_config_path }}/prometheus.yml
+
+[Install]
+WantedBy=multi-user.target
