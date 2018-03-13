@@ -120,8 +120,7 @@
     dest: "{{ prometheus_rule_path }}/{{ item.value.dest }}"
     validate: "{{ prometheus_daemon_dir }}/promtool check rules %s"
   with_dict: '{{ prometheus_rule_files | default({}) }}'
-  notify:
-    - restart prometheus
+
 
 - name: copy prometheus main config file from role's default, if necessary
   template:
@@ -129,8 +128,7 @@
     dest: "{{ prometheus_config_path }}/prometheus.yml"
     validate: "{{ prometheus_daemon_dir }}/promtool check config %s"
   when: prometheus_conf_main is not defined
-  notify:
-    - restart prometheus
+
 
 - name: copy prometheus main config file from playbook's, if any
   template:
@@ -138,6 +136,9 @@
     dest: "{{ prometheus_config_path }}/prometheus.yml"
     validate: "{{ prometheus_daemon_dir }}/promtool check config %s"
   when: prometheus_conf_main is defined
-  notify:
-    - restart prometheus
 
+- name: restart service prometheus 
+  systemd:
+    state: restarted
+    daemon_reload: yes
+    name: prometheus
