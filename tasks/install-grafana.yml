@@ -8,6 +8,6 @@
   
 - name: Enable & Start grafana
   service:
-    name: grafana
+    name: grafana-server
     state: started
     enabled: yes
