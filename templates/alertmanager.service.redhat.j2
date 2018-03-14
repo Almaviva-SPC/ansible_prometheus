@@ -5,10 +5,10 @@ After=prometheus.service
 
 [Service]
 User=prometheus
-WorkingDirectory=/opt/prometheus/alertmanager-0.14.0.linux-amd64
-ExecStart=/opt/prometheus/alertmanager-0.14.0.linux-amd64/alertmanager \
-        --config.file=/opt/prometheus/alertmanager-0.14.0.linux-amd64/simple.yml \
-        --storage.path=/var/lib/alertmanager
+WorkingDirectory={{ prometheus_alertmanager_daemon_dir }}
+ExecStart={{ prometheus_alertmanager_daemon_dir }}/alertmanager \
+        --config.file={{ prometheus_config_path }}/alertmanager.yml \
+        --storage.path={{ prometheus_alertmanager_db_path }}
 
 [Install]
 WantedBy=multi-user.target
