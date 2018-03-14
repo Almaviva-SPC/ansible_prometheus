@@ -1,0 +1,14 @@
+[Unit]
+Description=Prometheus AlertManager
+After=network.target
+After=prometheus.service
+
+[Service]
+User=prometheus
+WorkingDirectory=/opt/prometheus/alertmanager-0.14.0.linux-amd64
+ExecStart=/opt/prometheus/alertmanager-0.14.0.linux-amd64/alertmanager \
+        --config.file=/opt/prometheus/alertmanager-0.14.0.linux-amd64/simple.yml \
+        --storage.path=/var/lib/alertmanager
+
+[Install]
+WantedBy=multi-user.target
