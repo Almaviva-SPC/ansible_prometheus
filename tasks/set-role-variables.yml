@@ -47,5 +47,5 @@
 
 - name: use traditional SysV init, otherwise
   set_fact:
-    prometheus_node_exporter_use_systemd: false
+    prometheus_node_exporter_use_systemd: true
   when: prometheus_node_exporter_use_systemd is not defined
