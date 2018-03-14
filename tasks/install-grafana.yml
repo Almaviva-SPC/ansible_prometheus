@@ -1,0 +1,13 @@
+- name: RedHat - add grafana repo
+  become: yes
+  template: src=grafana.repo dest=/etc/yum.repos.d/grafana.repo
+
+- name: RedHat - Install grafana
+  become: yes
+  yum: name=grafana state=present
+  
+- name: Enable & Start grafana
+  service:
+    name: grafana
+    state: started
+    enabled: yes
