@@ -50,10 +50,11 @@
 
 - name: install prometheus
   include: install-prometheus.yml
+  include: install-grafana.yml
   when: '"prometheus" in prometheus_components'
 
 - name: install node-exporter
-  include: install-node-exporter.yml
+  include: install-node-exporter.yml  
   when: '"node_exporter" in prometheus_components'
 
 - name: install alertmanager
