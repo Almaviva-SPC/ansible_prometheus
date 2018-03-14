@@ -50,6 +50,9 @@
 
 - name: install prometheus
   include: install-prometheus.yml
+  when: '"prometheus" in prometheus_components'
+  
+  - name: install grafana
   include: install-grafana.yml
   when: '"prometheus" in prometheus_components'
 
