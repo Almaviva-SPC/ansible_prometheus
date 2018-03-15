@@ -127,7 +127,7 @@
 - name: copy alertmanager main config file from role's default, if necessary
   template:
     src: "../templates/alertmanager.yml.j2"
-    dest: "{{ prometheus_alertmanager_conf }}/alertmanager.yml"
+    dest: "{{ prometheus_config_path }}/alertmanager.yml"
   when: prometheus_alertmanager_conf is not defined
   
 
